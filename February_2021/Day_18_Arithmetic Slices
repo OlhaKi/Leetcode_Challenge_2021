@@ -1,0 +1,14 @@
+class Solution(object):
+    def numberOfArithmeticSlices(self, A):
+        """
+        :type A: List[int]
+        :rtype: int
+        """
+        n = len(A)
+        dypr = [0] * n
+        
+        for i in range(1, n - 1):
+            if A[i - 1] + A[i + 1] == A[i] * 2:
+                dypr[i] = dypr[i - 1] + 1
+                
+        return sum(dypr)
