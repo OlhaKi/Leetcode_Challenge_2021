@@ -1,0 +1,32 @@
+class Solution(object):
+    def minRemoveToMakeValid(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        
+        st1=[]
+        st2=[]
+        
+        #n=len(s)
+        res = ''
+        
+        for i in range(len(s)):
+            if s[i]=='(':
+                st2.append(i)
+                st1.append(s[i])
+                
+            if s[i]==')':
+                if st1 and st1[-1]=='(':
+                    st2.pop()
+                    st1.pop()
+                else:
+                    st2.append(i)
+                    st1.append(s[i])
+        
+        for i in range(len(s)):
+            if i not in st2 :
+                res+=s[i]
+                
+        return res        
+        
