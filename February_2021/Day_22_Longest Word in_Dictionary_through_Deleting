@@ -1,0 +1,43 @@
+class Solution(object):
+    def findLongestWord(self, s, d):
+        """
+        :type s: str
+        :type d: List[str]
+        :rtype: str
+        """
+        """
+        res = ''
+        for word in d:
+            idx = 0
+            for ch in s:
+                if idx == len(word):
+                    break
+                if ch == word[idx]:
+                    idx += 1
+            
+            if idx == len(word):
+                if idx > len(res) or (idx == len(res) and word < res):
+                
+                    res = word
+                
+        return res
+        """
+        def isSubseq(a, b):
+            i = 0
+            for ch in a:
+                i = b.find(ch, i)
+                if i == -1:
+                    return False
+                i += 1
+            return True
+        
+        heap = [(-len(word), word) for word in d]
+        heapq.heapify(heap)
+        
+        while heap:
+            word = heapq.heappop(heap)[1]
+            if isSubseq(word, s):
+                return word
+            
+        return ''        
+        
