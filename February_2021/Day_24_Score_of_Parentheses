@@ -1,0 +1,19 @@
+class Solution(object):
+    def scoreOfParentheses(self, S):
+        """
+        :type S: str
+        :rtype: int
+        """
+        
+        scoreOfParent = 0
+        st = [0]
+        
+        
+        for ch in S:
+            if ch == '(':
+                st.append(0)
+            else:
+                value = st.pop()
+                st[-1] += max(value * 2, 1)
+                
+        return sum(st)   
