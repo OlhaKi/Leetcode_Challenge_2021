@@ -1,0 +1,24 @@
+class Solution(object):
+    def validateStackSequences(self, pushed, popped):
+        """
+        :type pushed: List[int]
+        :type popped: List[int]
+        :rtype: bool
+        """
+        
+        n = len(pushed)
+        st = []
+        
+        push = 0
+        
+        for i in range(n):
+            if st and popped[i] == st[-1]:
+                st.pop()
+            else:
+                while push < n and pushed[push] != popped[i]:
+                    st.append(pushed[push])
+                    push += 1
+                    
+                push += 1
+                
+        return not st   
