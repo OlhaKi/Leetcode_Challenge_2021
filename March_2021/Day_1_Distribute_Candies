@@ -1,0 +1,12 @@
+class Solution(object):
+    def distributeCandies(self, candyType):
+        """
+        :type candyType: List[int]
+        :rtype: int
+        """
+        if candyType is None: return 0
+        x = len(set(candyType))
+        
+        
+        return min(len(candyType)//2,x)
+        
