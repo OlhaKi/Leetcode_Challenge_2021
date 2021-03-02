@@ -1,0 +1,10 @@
+class Solution(object):
+    def findErrorNums(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        sumset = sum(set(nums))
+        a = sum(nums) - sumset
+        b = sum(range(1, len(nums)+1)) - sumset
+        return [a, b]        
