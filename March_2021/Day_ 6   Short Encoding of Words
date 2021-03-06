@@ -1,0 +1,17 @@
+class Solution(object):
+    def minimumLengthEncoding(self, words):
+        """
+        :type words: List[str]
+        :rtype: int
+        """
+        words = sorted([word[::-1] for word in set(words)])
+        end = ""
+        
+        res = 0
+        for word in words + [""]:
+            
+            if not word.startswith(end):
+                res += len(end) + 1
+            end = word
+            
+        return res 
