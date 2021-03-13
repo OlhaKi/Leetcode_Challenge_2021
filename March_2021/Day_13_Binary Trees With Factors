@@ -1,0 +1,21 @@
+class Solution(object):
+    def numFactoredBinaryTrees(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: int
+        """
+        arr.sort()
+        nmap  = {}
+        res = 0
+        
+        for i,n in enumerate(arr):
+            nmap[n] = 1
+            
+            
+            for j in range(i):
+                if n % arr[j] == 0 and n / arr[j] in nmap:
+                    nmap[n] += nmap[arr[j]] * nmap[n / arr[j]]
+                    
+        return sum(nmap.values()) % (10**9 + 7)
+   
+        
